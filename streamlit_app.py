@@ -10,14 +10,24 @@ import time
 import json
 from pathlib import Path
 
-# Ensure imports work
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
 import streamlit as st
 
-from core.cv_parser import CVParser
-from core.ai_engine import AIEngine
-from core.job_scraper import JobScraper
+# ========== Robust Imports for Streamlit Cloud (Linux) ==========
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+core_dir = os.path.join(current_dir, "core")
+if core_dir not in sys.path:
+    sys.path.insert(0, core_dir)
+
+try:
+    from core.cv_parser import CVParser
+    from core.ai_engine import AIEngine
+    from core.job_scraper import JobScraper
+except ImportError:
+    from cv_parser import CVParser
+    from ai_engine import AIEngine
+    from job_scraper import JobScraper
 
 # ========== Page Config ==========
 st.set_page_config(
