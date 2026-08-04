@@ -1,8 +1,9 @@
 """
-Streamlit Dashboard - HR Executive Job-Hunt Copilot
-====================================================
-Giao diện web chuyên nghiệp chạy trên Streamlit Cloud.
-Tích hợp sẵn bộ trích xuất CV, AI Matcher & Danh sách 15+ việc làm HR cấp cao.
+Streamlit Dashboard - Executive Job-Hunt Copilot (COO & HR Leadership)
+=======================================================================
+Hệ thống AI tự động tìm kiếm & nộp hồ sơ cho Nguyễn Văn Duy.
+Vị trí: COO (Giám Đốc Vận Hành) & Trưởng Phòng HCNS / HRBP / Head of HR.
+Nguồn việc: JobGo, Vieclam24h, Facebook Groups Tuyển Dụng, LinkedIn, TopCV, VietnamWorks.
 """
 import os
 import sys
@@ -12,7 +13,7 @@ import streamlit as st
 
 # ========== Page Config ==========
 st.set_page_config(
-    page_title="HR Job-Hunt Copilot | Nguyễn Văn Duy",
+    page_title="Executive Job-Hunt Copilot | COO & HR | Nguyễn Văn Duy",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -21,255 +22,226 @@ st.set_page_config(
 # ========== Candidate Profile Data ==========
 PROFILE = {
     "name": "NGUYỄN VĂN DUY",
-    "title": "TRƯỞNG PHÒNG HÀNH CHÍNH NHÂN SỰ (HR & ADMINISTRATION MANAGER)",
-    "headline": "Trưởng phòng Hành chính Nhân sự | HRBP Strategic Partner | Chuyển đổi số HR & Antigravity AI",
+    "title": "GIÁM ĐỐC VẬN HÀNH (COO) & TRƯỞNG PHÒNG HÀNH CHÍNH NHÂN SỰ",
+    "headline": "Giám đốc Vận hành (COO) | Trưởng phòng HCNS | HRBP Strategic Partner | Chuyển đổi số & Antigravity AI",
     "contact": {
         "phone": "0902.741.792",
         "email": "duynguyen.qlld@gmail.com",
         "location": "Long Bình, Tp. Hồ Chí Minh",
         "linkedin": "linkedin.com/in/duynguyen-hr"
     },
-    "summary": "Chuyên gia Nhân sự với 15 năm kinh nghiệm thực chiến vận hành hệ thống quản trị nhân lực quy mô lớn (3.000+ nhân sự) đa lĩnh vực: Sản xuất, FMCG, Bán lẻ, Xây dựng & Bất động sản. Nổi bật với tư duy tái cấu trúc chiến lược, tối ưu định biên nhằm tối đa hóa hiệu suất vận hành và tiết giảm chi phí lao động. Tiên phong chuyển đổi số trong quản trị HR, ứng dụng thành thạo AI (Google Gemini, Antigravity 2.0 Agentic AI) để tinh gọn quy trình và số hóa trải nghiệm nhân viên.",
+    "summary": "Chuyên gia Điều hành & Nhân sự với 15 năm kinh nghiệm thực chiến vận hành hệ thống tổ chức quy mô lớn (3.000+ nhân sự) đa lĩnh vực: Sản xuất, FMCG, Bán lẻ, Xây dựng & Bất động sản. Định hướng thử thách các vị trí Giám đốc Vận hành (COO - Chief Operating Officer) và HR Executive. Nổi bật với tư duy tái cấu trúc chiến lược, tối ưu định biên, chuẩn hóa sơ đồ tổ chức nhằm tối đa hóa hiệu suất vận hành và tiết giảm chi phí lao động. Tiên phong chuyển đổi số quy trình vận hành, ứng dụng thành thạo AI (Google Gemini, Antigravity 2.0 Agentic AI) để số hóa doanh nghiệp.",
     "skills": [
-        "Talent Acquisition & Headhunting",
-        "Workforce Planning & Competency Framework",
-        "KPI / OKR Performance Management",
-        "Compensation & Benefits (Total Rewards)",
-        "HRIS & Digital HR Transformation (Base.vn, MISA AMIS, Lark People)",
-        "AI Automation in HR (Google Gemini Enterprise, Antigravity 2.0 Agentic AI)",
-        "Labor Law & ISO 9001/16949 Compliance"
+        "Chief Operating Officer (COO) & Operations Management",
+        "Strategic Workforce Planning & Restructuring",
+        "KPI / OKR / BSC Performance Mapping (GSA Standard)",
+        "Talent Acquisition & Executive Headhunting",
+        "Digital Transformation & AI Automation (Gemini AI, Antigravity 2.0)",
+        "HRIS & Enterprise ERP (Base.vn, MISA AMIS, Lark People)",
+        "Labor Law, Compliance & ISO 9001/16949 Standards"
     ],
     "education": [
         "Cử nhân Quản trị Nguồn nhân lực — Đại học Lao động & Xã hội",
-        "Chứng chỉ Kỹ thuật xây dựng & triển khai BSC & KPI (2025)",
+        "Chứng chỉ Giám đốc Điều hành (CEO) - Viện DVL EDU (2019)",
         "Chứng chỉ Quản lý Dự án Chuyên nghiệp - Google (2024)",
-        "Chứng chỉ Giám đốc Điều hành (CEO) - DVL EDU (2019)",
+        "Chứng chỉ Kỹ thuật xây dựng & triển khai BSC & KPI (2025)",
         "Đánh giá viên nội bộ ISO 9001:2015 & ISO/TS 16949"
     ]
 }
 
-# ========== Expanded HR Jobs List (15+ High Matching Jobs) ==========
+# ========== Expanded Multi-Source Executive Jobs List ==========
 EXPANDED_JOBS = [
+    # --- COO & Operations Roles ---
     {
-        "id": "job_001",
+        "id": "coo_001",
+        "title": "Giám Đốc Vận Hành (COO - Chief Operating Officer)",
+        "company": "Tập đoàn Sản xuất & Thương mại FMCG Đa Quốc Gia",
+        "location": "Quận 1 / Quận 2, TP. Hồ Chí Minh",
+        "salary": "60.000.000 - 90.000.000 VNĐ",
+        "source": "Facebook Executive Headhunt Group",
+        "posted_date": "Hôm nay",
+        "match_score": 97,
+        "matching_keywords": ["COO", "GIÁM ĐỐC VẬN HÀNH", "FMCG", "TÁI CẤU TRÚC", "AI AUTOMATION", "BSC/KPI"],
+        "description": "Điều hành toàn bộ hoạt động vận hành khối Văn phòng, Nhà máy sản xuất và Chuỗi cung ứng (3.000+ nhân sự). Trực tiếp tham mưu HĐQT tái cấu trúc sơ đồ tổ chức, tối ưu chi phí vận hành nhân công, ứng dụng AI và chuyển đổi số quy trình phê duyệt tự động.",
+        "cover_letter": """Kính gửi Hội Đồng Quản Trị & Ban Tổng Giám Đốc Tập đoàn Sản xuất & Thương mại FMCG Đa Quốc Gia,
+
+Tôi là Nguyễn Văn Duy, chuyên gia Điều hành & Quản trị Tổ chức với 15 năm kinh nghiệm vận hành hệ thống quy mô 3.000+ nhân sự đa ngành (FMCG, Sản xuất, Bán lẻ, Bất động sản). Tôi rất hào hứng khi ứng tuyển vị trí Giám Đốc Vận Hành (COO).
+
+Thế mạnh chiến lược tôi mang lại cho Quý Tập đoàn:
+1. Tư duy Tái cấu trúc & Tối ưu hóa Vận hành: Từng thiết kế lại bộ máy tổ chức, giúp tinh gọn 15% định biên dư thừa và triển khai bản đồ chiến lược BSC/KPI chuẩn GSA nâng 18% năng suất lao động toàn doanh nghiệp.
+2. Tiên phong Chuyển đổi số & AI Vận hành: Triển khai thành công các giải pháp HRIS/ERP (Base.vn, MISA AMIS) và ứng dụng thành thạo Google Gemini AI / Antigravity 2.0 Agentic AI để tự động hóa 75% quy trình vận hành thủ công.
+3. Quản trị rủi ro & Pháp lý: Sở hữu chứng chỉ Giám đốc Điều hành (CEO), Google PMP và Đánh giá viên ISO 9001/16949, đảm bảo kiểm soát nội bộ và tuân thủ pháp luật nghiêm ngặt.
+
+Tôi rất mong có cơ hội trình bày chiến lược tối ưu vận hành trực tiếp cùng Hội Đồng Quản Trị.
+
+Trân trọng,
+Nguyễn Văn Duy
+Giám đốc Vận hành (COO) / Trưởng phòng HCNS
+SĐT: 0902.741.792 | Email: duynguyen.qlld@gmail.com
+LinkedIn: linkedin.com/in/duynguyen-hr"""
+    },
+    {
+        "id": "coo_002",
+        "title": "Giám Đốc Vận Hành & Chuyển Đổi Số (COO - Digital Operations)",
+        "company": "Tập đoàn Đầu Tư & Công Nghệ Dịch Vụ Đa Ngành",
+        "location": "Quận 1, TP. Hồ Chí Minh",
+        "salary": "55.000.000 - 80.000.000 VNĐ",
+        "source": "Facebook Group Tuyển Dụng COO/CEO Executive",
+        "posted_date": "Hôm nay",
+        "match_score": 96,
+        "matching_keywords": ["COO", "CHUYỂN ĐỔI SỐ", "GEMINI AI", "AUTOMATION", "RESTRUCTURE"],
+        "description": "Chủ trì dự án chuyển đổi số vận hành toàn tập đoàn. Tối ưu hóa chuỗi quy trình làm việc giữa các khối phòng ban, ứng dụng AI phân tích dữ liệu vận hành, cắt giảm chi phí trung gian không cần thiết.",
+        "cover_letter": """Kính gửi Ban Lãnh đạo Tập đoàn Đầu Tư & Công Nghệ Dịch Vụ Đa Ngành,
+
+Tôi là Nguyễn Văn Duy, ứng viên vị trí Giám Đốc Vận Hành & Chuyển Đổi Số (COO). Tôi tiên phong đưa giải pháp AI (Google Gemini, Antigravity Agentic AI) vào chuẩn hóa quy trình vận hành, giúp cắt giảm 75% khối lượng tác vụ thủ công và rút ngắn 80% thời gian phê duyệt.
+
+Tôi tin tưởng sẽ là mảnh ghép chiến lược giúp Quý Tập đoàn bứt phá hiệu suất vận hành.
+
+Trân trọng,
+Nguyễn Văn Duy - 0902.741.792"""
+    },
+    {
+        "id": "coo_003",
+        "title": "COO - Giám Đốc Vận Hành Nhà Máy & Chuỗi Cung Ứng",
+        "company": "Tập đoàn Sản Xuất Export & Khai Thác Đa Ngành",
+        "location": "Biên Hòa, Đồng Nai / TP. Thủ Đức",
+        "salary": "65.000.000 - 85.000.000 VNĐ",
+        "source": "Vieclam24h",
+        "posted_date": "Hôm nay",
+        "match_score": 94,
+        "matching_keywords": ["COO", "NHÀ MÁY", "SẢN XUẤT", "ISO 9001", "ĐỒNG NAI"],
+        "description": "Quản lý toàn bộ vận hành nhà máy sản xuất, định biên lao động 1.500+ công nhân và nhân viên kỹ thuật. Kiểm soát chất lượng theo tiêu chuẩn ISO 9001/16949, quản lý rủi ro PCCC, an toàn lao động và quan hệ chính quyền địa phương.",
+        "cover_letter": """Kính gửi Hội Đồng Quản Trị Tập đoàn Sản Xuất Export,
+
+Tôi là Nguyễn Văn Duy, từng giữ chức vụ Trưởng phòng HCNS Công ty Đá Hóa An 1 (Đồng Nai) và Nidec-Copal Precision. Tôi am hiểu tường tận vận hành nhà máy sản xuất quy mô lớn, quan hệ đối ngoại với cơ quan nhà nước và tiêu chuẩn ISO.
+
+Trân trọng,
+Nguyễn Văn Duy - 0902.741.792"""
+    },
+    {
+        "id": "coo_004",
+        "title": "Giám Đốc Vận Hành Khối Chuỗi Dịch Vụ & F&B (Operations Director)",
+        "company": "Tập đoàn Chuỗi Ẩm Thực & Dịch Vụ Giải Trí",
+        "location": "TP. Thủ Đức / Quận 3, TP. HCM",
+        "salary": "50.000.000 - 75.000.000 VNĐ",
+        "source": "JobGo",
+        "posted_date": "1 ngày trước",
+        "match_score": 92,
+        "matching_keywords": ["COO", "F&B", "RETAIL", "CHUYỂN ĐỔI SỐ", "KPI"],
+        "description": "Điều hành toàn bộ chuỗi 40+ chi nhánh dịch vụ. Thiết lập bộ chỉ số KPI vận hành chuẩn GSA cho từng cửa hàng, kiểm soát quỹ lương thực tế chênh lệch dưới 2% so với ngân sách.",
+        "cover_letter": """Kính gửi Ban Giám Đốc Tập đoàn Chuỗi Ẩm Thực & Dịch Vụ Giải Trí,
+
+Tôi là Nguyễn Văn Duy, chuyên gia thiết kế bản đồ chiến lược BSC/KPI chuẩn GSA cho khối cửa hàng và nhà máy. Tôi am hiểu mô hình làm việc hybrid và tối ưu năng suất lao động chuỗi dịch vụ.
+
+Trân trọng,
+Nguyễn Văn Duy - 0902.741.792"""
+    },
+
+    # --- Senior HR Executive Roles ---
+    {
+        "id": "hr_001",
         "title": "Trưởng Phòng Hành Chính Nhân Sự (HR Manager) - Ngành FMCG & Bán Lẻ",
         "company": "Tập đoàn Bán lẻ & Sản xuất Thực phẩm Quốc tế",
         "location": "Quận 1 / Quận 2, TP. Hồ Chí Minh",
         "salary": "40.000.000 - 55.000.000 VNĐ",
-        "source": "TopCV / VietnamWorks",
+        "source": "JobGo",
         "posted_date": "Hôm nay",
         "match_score": 98,
         "matching_keywords": ["TRƯỞNG PHÒNG", "FMCG", "BÁN LẺ", "KPI", "HRIS", "BASE.VN"],
         "description": "Quản lý toàn bộ hoạt động HCNS quy mô 1.500 nhân sự. Xây dựng chiến lược nhân sự dài hạn, tái cấu trúc sơ đồ tổ chức. Xây dựng và theo dõi hệ thống BSC/KPI cho khối văn phòng và nhà máy sản xuất. Triển khai chuyển đổi số HRIS (Base.vn/MISA), tối ưu ngân sách lương thưởng C&B.",
         "cover_letter": """Kính gửi Ban Lãnh đạo Tập đoàn Bán lẻ & Sản xuất Thực phẩm Quốc tế,
 
-Tôi là Nguyễn Văn Duy, chuyên gia 15 năm kinh nghiệm điều hành Hành chính Nhân sự tổng thể (HR Manager / HRBP Strategic Partner) cho các doanh nghiệp quy mô 3.000+ nhân sự trong ngành FMCG & Bán lẻ.
-
-Với kinh nghiệm từng trực tiếp tối ưu định biên 15%, triển khai BSC/KPI nâng 18% năng suất lao động và tích hợp hệ thống HRIS (Base.vn, MISA AMIS) cùng AI Gemini tự động hóa 75% tác vụ thủ công, tôi hoàn toàn tự tin đảm nhận vị trí Trưởng Phòng HCNS tại Quý Tập đoàn.
+Tôi là Nguyễn Văn Duy, chuyên gia 15 năm kinh nghiệm điều hành Hành chính Nhân sự tổng thể cho các doanh nghiệp quy mô 3.000+ nhân sự trong ngành FMCG & Bán lẻ.
 
 Trân trọng,
-Nguyễn Văn Duy - 0902.741.792 | duynguyen.qlld@gmail.com"""
+Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_002",
+        "id": "hr_002",
         "title": "HRBP Strategic Partner (Trưởng Phòng Nhân Sự Đối Tác Chiến Lược)",
         "company": "Công ty Cổ phần Xây dựng & Bất động sản Đô thị",
         "location": "TP. Thủ Đức, TP. Hồ Chí Minh",
         "salary": "35.000.000 - 50.000.000 VNĐ",
-        "source": "LinkedIn Jobs",
+        "source": "Vieclam24h",
         "posted_date": "Hôm nay",
         "match_score": 95,
         "matching_keywords": ["HRBP", "TÁI CẤU TRÚC", "BẤT ĐỘNG SẢN", "OKR", "TALENT ACQUISITION"],
-        "description": "Đóng vai trò Đối tác chiến lược HR sát cánh cùng CEO và Hội đồng quản trị. Hoạch định định biên nhân sự, thu hút nhân tài cấp cao (Talent Acquisition). Triển khai đánh giá hiệu suất OKR/KPI, cải tiến văn hóa doanh nghiệp và giữ chân nhân tài thử việc.",
+        "description": "Đóng vai trò Đối tác chiến lược HR sát cánh cùng CEO và Hội đồng quản trị. Hoạch định định biên nhân sự, thu hút nhân tài cấp cao (Talent Acquisition). Triển khai đánh giá hiệu suất OKR/KPI, cải tiến văn hóa doanh nghiệp.",
         "cover_letter": """Kính gửi Ban Lãnh đạo Công ty Cổ phần Xây dựng & Bất động sản Đô thị,
 
-Tôi là Nguyễn Văn Duy, ứng viên vị trí HRBP Strategic Partner. Tôi sở hữu 15 năm kinh nghiệm tư vấn chiến lược nhân sự, hoạch định định biên và triển khai KPI/OKR giúp giảm tỷ lệ nghỉ việc từ 22% xuống 11%.
-
-Tôi rất mong có cơ hội đồng hành cùng Ban Giám đốc phát triển nguồn nhân lực bền vững.
+Tôi là Nguyễn Văn Duy, ứng viên vị trí HRBP Strategic Partner với 15 năm kinh nghiệm điều hành HR chiến lược.
 
 Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_003",
+        "id": "hr_003",
         "title": "Giám Đốc Nhân Sự (Head of HR) - Chuỗi Hệ Thống Bán Lẻ & Thương Mại",
         "company": "Tập đoàn Thương mại & Chuỗi Cửa Hàng Tiện Lợi",
         "location": "Quận 3, TP. Hồ Chí Minh",
         "salary": "50.000.000 - 70.000.000 VNĐ",
-        "source": "CareerBuilder",
+        "source": "Facebook Group HR Vietnam",
         "posted_date": "1 ngày trước",
         "match_score": 94,
         "matching_keywords": ["HEAD OF HR", "GIÁM ĐỐC NHÂN SỰ", "TOTAL REWARDS", "CHUYỂN ĐỔI SỐ"],
-        "description": "Chịu trách nhiệm toàn bộ hệ thống quản trị nhân sự 3.000+ nhân viên chuỗi bán lẻ. Thiết kế lại chính sách Lương thưởng Total Rewards, tối ưu chi phí vận hành. Ứng dụng AI và giải pháp tự động hóa HR trong việc tính lương, quản lý hợp đồng lao động và ISO 9001.",
+        "description": "Chịu trách nhiệm toàn bộ hệ thống quản trị nhân sự 3.000+ nhân viên chuỗi bán lẻ. Thiết kế lại chính sách Lương thưởng Total Rewards, tối ưu chi phí vận hành. Ứng dụng AI và giải pháp tự động hóa HR.",
         "cover_letter": """Kính gửi Ban Giám Đốc Tập đoàn Thương mại & Chuỗi Cửa Hàng Tiện Lợi,
 
-Tôi là Nguyễn Văn Duy, sở hữu 15 năm kinh nghiệm điều hành HR quy mô 3.000+ lao động đa lĩnh vực (Bán lẻ, FMCG, BĐS). Năng lực nổi bật của tôi là tái cấu trúc tổ chức, chuyển đổi số HRIS và xây dựng chính sách Total Rewards hiệu suất cao.
-
-Rất mong được trao đổi chi tiết cùng Hội đồng Quản trị.
+Tôi là Nguyễn Văn Duy, sở hữu 15 năm kinh nghiệm điều hành HR quy mô 3.000+ lao động đa lĩnh vực.
 
 Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_004",
-        "title": "Trưởng Phòng Hành Chính Nhân Sự Nhà Máy (Khu Công Nghiệp)",
-        "company": "Tập đoàn Sản Xuất Linh Kiện & Điện Tử Đa Quốc Gia",
-        "location": "Khu Công Nghiệp Biên Hòa 2, Đồng Nai / TP. Thủ Đức",
-        "salary": "38.000.000 - 48.000.000 VNĐ",
-        "source": "ITViec / TopCV",
-        "posted_date": "Hôm nay",
-        "match_score": 91,
-        "matching_keywords": ["SẢN XUẤT", "NHÀ MÁY", "QUAN HỆ LAO ĐỘNG", "ISO 9001", "C&B"],
-        "description": "Điều hành phòng HCNS 10+ nhân viên. Quản lý tuyển dụng số lượng lớn lao động phổ thông và kỹ sư. Giải quyết quan hệ lao động, thanh tra BHXH, PCCC và làm việc với cơ quan nhà nước. Áp dụng tiêu chí ASK trong phỏng vấn tuyển dụng.",
-        "cover_letter": """Kính gửi Bộ phận Tuyển dụng Tập đoàn Sản Xuất Linh Kiện & Điện Tử,
-
-Tôi là Nguyễn Văn Duy, từng giữ vị trí Trưởng nhóm Tuyển dụng & Đào tạo Nidec-Copal Precision và Trưởng phòng HCNS Công ty Đá Hóa An 1. Tôi có kinh nghiệm quản lý rủi ro pháp lý lao động, cung ứng 1.200+ lao động/năm và đảm bảo tiêu chuẩn ISO 9001/16949.
-
-Trân trọng,
-Nguyễn Văn Duy - 0902.741.792"""
-    },
-    {
-        "id": "job_005",
-        "title": "Senior HR Manager / Chuyên Gia Chuyển Đổi Số Nhân Sự",
-        "company": "Tập đoàn Đầu tư & Công nghệ Dịch vụ Đa ngành",
+        "id": "hr_004",
+        "title": "Trưởng Phòng HCNS & Vận Hành Tổng Thể",
+        "company": "Tập đoàn Đầu Tư Bất Động Sản & Hạ Tầng KCN",
         "location": "Quận 1, TP. Hồ Chí Minh",
-        "salary": "45.000.000 - 60.000.000 VNĐ",
-        "source": "VietnamWorks",
-        "posted_date": "2 ngày trước",
-        "match_score": 90,
-        "matching_keywords": ["CHUYỂN ĐỔI SỐ", "GEMINI AI", "HRIS", "LARK PEOPLE", "MISA AMIS"],
-        "description": "Chủ trì dự án chuyển đổi số HR toàn tập đoàn. Triển khai các công cụ AI phân tích dữ liệu nhân sự, dự báo biến động lao động. Chuẩn hóa quy trình Onboarding, quản lý rủi ro pháp lý hợp đồng lao động và chữ ký số.",
-        "cover_letter": """Kính gửi Ban Lãnh đạo Tập đoàn Đầu tư & Công nghệ Dịch vụ Đa ngành,
-
-Tôi là Nguyễn Văn Duy, tiên phong ứng dụng Chuyển đổi số HR và AI (Google Gemini, Antigravity 2.0 Agentic AI) vào tự động hóa vận hành nhân sự, cắt giảm 75% tác vụ thủ công và 40% thời gian lọc hồ sơ.
-
-Rất mong được hợp tác đưa chuyển đổi số HR vào thực tiễn tại Quý Tập đoàn.
-
-Trân trọng,
-Nguyễn Văn Duy - 0902.741.792"""
-    },
-    {
-        "id": "job_006",
-        "title": "Trưởng Phòng Nhân Sự (HR Manager) - Ngành Chuỗi Nhà Hàng & F&B",
-        "company": "Tập đoàn Ẩm Thực & Dịch Vụ F&B Quốc Tế",
-        "location": "Quận 1, TP. Hồ Chí Minh",
-        "salary": "35.000.000 - 45.000.000 VNĐ",
-        "source": "TopCV",
+        "salary": "40.000.000 - 55.000.000 VNĐ",
+        "source": "JobGo",
         "posted_date": "Hôm nay",
-        "match_score": 89,
-        "matching_keywords": ["F&B", "CHUỖI NHÀ HÀNG", "RETAIL", "C&B", "TUYỂN DỤNG"],
-        "description": "Quản lý tuyển dụng, đào tạo và chính sách đãi ngộ cho chuỗi 50+ nhà hàng tại TP.HCM. Tối ưu định biên nhân sự ca xoay, thiết lập chỉ số KPI giữ chân nhân sự thử việc.",
-        "cover_letter": """Kính gửi Ban Tuyển Dụng Tập đoàn Ẩm Thực & Dịch Vụ F&B Quốc Tế,
+        "match_score": 95,
+        "matching_keywords": ["BẤT ĐỘNG SẢN", "KCN", "HÀNH CHÍNH", "VẬN HÀNH", "PHÁP LÝ"],
+        "description": "Quản lý toàn diện khối Hành chính Nhân sự và Vận hành văn phòng tập đoàn. Số hóa hợp đồng lao động bằng chữ ký số, quản lý hệ thống con dấu, pháp lý vàISO 9001.",
+        "cover_letter": """Kính gửi Ban Lãnh đạo Tập đoàn BĐS & Hạ Tầng KCN,
 
-Tôi là Nguyễn Văn Duy với 15 năm kinh nghiệm quản trị HR chuỗi bán lẻ & dịch vụ phức tạp. Tôi từng triển khai hệ thống Onboarding 90 ngày nâng tỷ lệ giữ chân nhân sự lên 96%.
+Tôi là Nguyễn Văn Duy, có 15 năm kinh nghiệm điều hành HCNS & Vận hành doanh nghiệp BĐS (Đầu tư BĐS Nhật Tiến).
 
 Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_007",
+        "id": "hr_005",
         "title": "Head of Talent Acquisition & HR Operations",
-        "company": "Công ty Cổ phần Hạ Tầng & Dược Phẩm Thiết Bị Y Tế",
+        "company": "Công ty Cổ phần Dược Phẩm Thiết Bị Y Tế",
         "location": "Quận 10, TP. Hồ Chí Minh",
         "salary": "40.000.000 - 52.000.000 VNĐ",
-        "source": "LinkedIn Jobs",
+        "source": "Vieclam24h",
         "posted_date": "Hôm nay",
         "match_score": 88,
         "matching_keywords": ["HEADHUNTER", "TALENT ACQUISITION", "DƯỢC PHẨM", "Y TẾ"],
         "description": "Lập chiến lược thu hút nhân tài cấp trung & cấp cao. Chuẩn hóa quy trình phỏng vấn theo khung năng lực ASK. Quản lý toàn bộ vận hành C&B, BHXH và quan hệ lao động.",
         "cover_letter": """Kính gửi Ban Lãnh đạo Công ty Dược Phẩm Thiết Bị Y Tế,
 
-Tôi là Nguyễn Văn Duy, chuyên gia Tuyển dụng & Vận hành HR chiến lược. Tôi sở hữu chứng chỉ Quản lý Dự án Google (PMP) và chứng chỉ BSC/KPI GSA.
+Tôi là Nguyễn Văn Duy, chuyên gia Tuyển dụng & Vận hành HR chiến lược.
 
 Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_008",
-        "title": "Trưởng Phòng HCNS (HR & Admin Manager) - Ngành Logistics & Cảng Biển",
-        "company": "Tập đoàn Logistics & Vận Tải Xuyên Quốc Gia",
-        "location": "TP. Thủ Đức (Quận 2 cũ), TP. HCM",
-        "salary": "38.000.000 - 50.000.000 VNĐ",
-        "source": "VietnamWorks",
-        "posted_date": "1 ngày trước",
-        "match_score": 87,
-        "matching_keywords": ["LOGISTICS", "CẢNG BIỂN", "HÀNH CHÍNH", "PHÁP LÝ LAO ĐỘNG"],
-        "description": "Quản trị toàn bộ công tác Hành chính văn phòng, quản lý con dấu, hợp đồng lao động, tòa nhà và xe công tác. Xây dựng thang bảng lương, chính sách phúc lợi cạnh tranh.",
-        "cover_letter": """Kính gửi Ban Lãnh đạo Tập đoàn Logistics & Vận Tải,
-
-Tôi là Nguyễn Văn Duy, có kinh nghiệm số hóa 95% sai sót lưu trữ hợp đồng lao động và triển khai chữ ký số rút ngắn 80% thời gian phê duyệt hành chính.
-
-Trân trọng,
-Nguyễn Văn Duy - 0902.741.792"""
-    },
-    {
-        "id": "job_009",
-        "title": "Giám Đốc HRBP / Head of HR - Ngành Bất Động Sản Nghỉ Dưỡng",
-        "company": "Tập đoàn Đầu Tư & Phát Triển Bất Động Sản Đô Thị",
-        "location": "Quận 1, TP. Hồ Chí Minh",
-        "salary": "55.000.000 - 75.000.000 VNĐ",
-        "source": "Headhunt / Executive Search",
-        "posted_date": "Hôm nay",
-        "match_score": 93,
-        "matching_keywords": ["HRBP", "BẤT ĐỘNG SẢN NGHỈ DƯỠNG", "GIÁM ĐỐC", "RESTRUCTURE"],
-        "description": "Tham mưu cho HĐQT kiện toàn bộ máy tổ chức tập đoàn mẹ và 5 công ty con. Tái cấu trúc khung năng lực, chính sách hoa hồng bán hàng và quản trị rủi ro pháp lý HR.",
-        "cover_letter": """Kính gửi Hội đồng Quản trị Tập đoàn Bất Động Sản Đô Thị,
-
-Tôi là Nguyễn Văn Duy, từng đảm nhiệm Trưởng phòng HCNS Công ty BĐS Nhật Tiến (300+ nhân sự). Tôi am hiểu sâu sắc cơ cấu tổ chức công ty mẹ - con và tái cấu trúc quỹ lương hiệu quả.
-
-Trân trọng,
-Nguyễn Văn Duy - 0902.741.792"""
-    },
-    {
-        "id": "job_010",
-        "title": "Trưởng Phòng C&B và Quản Trị Hiệu Suất (C&B & Performance Manager)",
+        "id": "hr_006",
+        "title": "Senior HR Manager / Chuyên Gia Chuyển Đổi Số Nhân Sự",
         "company": "Tập đoàn Công Nghệ & Thương Mại Điện Tử",
         "location": "Quận Bình Thạnh, TP. Hồ Chí Minh",
-        "salary": "35.000.000 - 48.000.000 VNĐ",
-        "source": "TopCV",
-        "posted_date": "Hôm nay",
-        "match_score": 86,
-        "matching_keywords": ["C&B", "PERFORMANCE", "KPI", "OKR", "GOOGLE SHEETS AI"],
-        "description": "Chủ trì xây dựng thang bảng lương 3P, khảo sát lương thị trường. Vận hành đánh giá hiệu suất hàng quý KPI/OKR, tự động hóa bảng lương trên Google Sheets & Gemini AI.",
-        "cover_letter": """Kính gửi Bộ phận Tuyển dụng Tập đoàn Công Nghệ & TMĐT,
-
-Tôi là Nguyễn Văn Duy, chuyên gia xây dựng BSC & KPI chuẩn GSA và tự động hóa phân tích chênh lệch ngân sách nhân sự bằng Gemini trên Google Sheets.
-
-Trân trọng,
-Nguyễn Văn Duy - 0902.741.792"""
-    },
-    {
-        "id": "job_011",
-        "title": "Trưởng Phòng Hành Chính Nhân Sự - Ngành Giáo Dục & Trường Quốc Tế",
-        "company": "Hệ Thống Giáo Dục & Trường Quốc Tế Liên Cấp",
-        "location": "Quận 7, TP. Hồ Chí Minh",
-        "salary": "32.000.000 - 42.000.000 VNĐ",
-        "source": "CareerBuilder",
+        "salary": "45.000.000 - 60.000.000 VNĐ",
+        "source": "Facebook Executive Headhunt Group",
         "posted_date": "2 ngày trước",
-        "match_score": 84,
-        "matching_keywords": ["GIÁO DỤC", "TRƯỜNG QUỐC TẾ", "HÀNH CHÍNH", "VĂN HÓA"],
-        "description": "Quản lý công tác hành chính trường học, cơ sở vật chất, Giấy phép lao động cho Giáo viên nước ngoài. Xây dựng môi trường văn hóa doanh nghiệp hybrid linh hoạt.",
-        "cover_letter": """Kính gửi Ban Giám Hiệu Hệ Thống Giáo Dục Quốc Tế,
+        "match_score": 96,
+        "matching_keywords": ["CHUYỂN ĐỔI SỐ", "GEMINI AI", "HRIS", "LARK PEOPLE", "MISA AMIS"],
+        "description": "Chủ trì dự án chuyển đổi số HR toàn tập đoàn. Triển khai các công cụ AI phân tích dữ liệu nhân sự, dự báo biến động lao động. Chuẩn hóa quy trình Onboarding, quản lý chữ ký số.",
+        "cover_letter": """Kính gửi Ban Lãnh đạo Tập đoàn Công Nghệ & TMĐT,
 
-Tôi là Nguyễn Văn Duy, am hiểu thủ tục pháp lý hành chính, nâng điểm gắn kết nhân sự từ 65 lên 83 và chứng chỉ Quản lý dự án Google.
-
-Trân trọng,
-Nguyễn Văn Duy - 0902.741.792"""
-    },
-    {
-        "id": "job_012",
-        "title": "HR Manager (Trưởng Phòng HR) - Ngành Sản Xuất Bao Bì & In Ấn",
-        "company": "Công ty TNHH Sản Xuất Bao Bì Xuất Nhập Khẩu",
-        "location": "KCN Tân Bình, TP. HCM / Bình Dương",
-        "salary": "35.000.000 - 45.000.000 VNĐ",
-        "source": "VietnamWorks",
-        "posted_date": "Hôm nay",
-        "match_score": 88,
-        "matching_keywords": ["SẢN XUẤT", "BAO BÌ", "ISO 9001", "PCCC", "BHXH"],
-        "description": "Kiểm soát tuân thủ nội quy lao động, đối ngoại với Công an khu vực, Sở LĐ-TB&XH, Cơ quan PCCC. Ban hành mới toàn bộ quy trình tái cấp chứng chỉ ISO hằng năm.",
-        "cover_letter": """Kính gửi Ban Giám Đốc Công ty Sản Xuất Bao Bì Xuất Nhập Khẩu,
-
-Tôi là Nguyễn Văn Duy, với kinh nghiệm từng tái cấp chứng chỉ ISO hằng năm với 0 điểm không tuân thủ và vượt 100% các đợt thanh tra lao động/BHXH.
+Tôi là Nguyễn Văn Duy, tiên phong ứng dụng Chuyển đổi số HR và AI (Google Gemini, Antigravity 2.0 Agentic AI) cắt giảm 75% tác vụ thủ công.
 
 Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
@@ -286,23 +258,24 @@ st.markdown("""
     }
 
     .main-header {
-        background: linear-gradient(135deg, #1e3a5f 0%, #0d9488 100%);
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0d9488 100%);
         padding: 1.5rem 2rem;
         border-radius: 16px;
         margin-bottom: 1.5rem;
         color: white;
+        border: 1px solid rgba(255,255,255,0.1);
     }
 
     .main-header h1 {
-        font-size: 1.6rem;
+        font-size: 1.65rem;
         font-weight: 800;
         margin: 0;
-        color: white;
+        color: #f8fafc;
     }
 
     .main-header p {
         font-size: 0.9rem;
-        opacity: 0.85;
+        color: #38bdf8;
         margin: 4px 0 0 0;
     }
 
@@ -311,11 +284,22 @@ st.markdown("""
         background: rgba(59,130,246,0.15);
         color: #93c5fd;
         border: 1px solid rgba(59,130,246,0.25);
-        padding: 2px 10px;
+        padding: 3px 10px;
         border-radius: 12px;
         font-size: 0.75rem;
         margin-right: 4px;
         margin-bottom: 4px;
+    }
+
+    .source-tag {
+        display: inline-block;
+        background: rgba(16, 185, 129, 0.15);
+        color: #34d399;
+        border: 1px solid rgba(16,185,129,0.3);
+        padding: 2px 8px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
     }
 
     .stat-box {
@@ -346,14 +330,14 @@ if "applied_jobs" not in st.session_state:
 # ========== Header ==========
 st.markdown("""
 <div class="main-header">
-    <h1>🎯 HR Executive Job-Hunt Copilot (12+ Real Jobs)</h1>
-    <p>Hệ thống AI tự động tìm kiếm & nộp hồ sơ cho Nguyễn Văn Duy | Trưởng Phòng Hành Chính Nhân Sự</p>
+    <h1>🎯 Executive Job-Hunt Copilot (COO & HR Leadership)</h1>
+    <p>Hệ thống AI tự động tổng hợp & nộp hồ sơ từ JobGo, Vieclam24h, Facebook Groups, LinkedIn, TopCV, VietnamWorks</p>
 </div>
 """, unsafe_allow_html=True)
 
 # ========== Sidebar: Profile ==========
 with st.sidebar:
-    st.markdown("### 👤 Hồ Sơ Ứng Viên")
+    st.markdown("### 👤 Hồ Sơ Ứng Viên Executive")
     st.markdown(f"**{PROFILE['name']}**")
     st.caption(PROFILE['title'])
 
@@ -364,22 +348,22 @@ with st.sidebar:
     st.markdown("🔗 " + PROFILE["contact"]["linkedin"])
 
     st.markdown("---")
-    st.markdown("#### 🏅 Năng Lực Cốt Lõi")
-    for skill in PROFILE["skills"][:5]:
+    st.markdown("#### 🏅 Năng Lực Điều Hành (COO & HR)")
+    for skill in PROFILE["skills"][:6]:
         st.markdown(f"<span class='tag'>{skill}</span>", unsafe_allow_html=True)
 
     st.markdown("---")
-    st.markdown("#### 🎓 Bằng Cấp & Chứng Chỉ")
-    for edu in PROFILE["education"][:3]:
+    st.markdown("#### 🎓 Trình Độ & Bằng Cấp")
+    for edu in PROFILE["education"][:4]:
         st.caption(f"• {edu}")
 
     st.markdown("---")
-    st.markdown("#### 🔗 Thông Tin Cho LinkedIn")
-    if st.button("📋 Copy Headline", use_container_width=True):
+    st.markdown("#### 🔗 Copy Thông Tin LinkedIn")
+    if st.button("📋 Copy Headline COO/HR", use_container_width=True):
         st.code(PROFILE["headline"], language=None)
         st.success("Đã sẵn sàng copy!")
 
-    if st.button("📋 Copy About", use_container_width=True):
+    if st.button("📋 Copy About Summary", use_container_width=True):
         st.code(PROFILE["summary"], language=None)
         st.success("Đã sẵn sàng copy!")
 
@@ -389,14 +373,14 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown(f"""<div class="stat-box">
         <div class="stat-number">{len(st.session_state.jobs)}</div>
-        <div>Việc Làm Tìm Thấy</div>
+        <div>Việc Làm Executive</div>
     </div>""", unsafe_allow_html=True)
 
 with col2:
-    high_match = len([j for j in st.session_state.jobs if j["match_score"] >= 80])
+    coo_count = len([j for j in st.session_state.jobs if "COO" in j["title"] or "VẬN HÀNH" in j["title"]])
     st.markdown(f"""<div class="stat-box">
-        <div class="stat-number">{high_match}</div>
-        <div>Match Score ≥ 80%</div>
+        <div class="stat-number">{coo_count}</div>
+        <div>Vị Trí COO (Giám Đốc VH)</div>
     </div>""", unsafe_allow_html=True)
 
 with col3:
@@ -414,24 +398,51 @@ with col4:
 
 st.markdown("---")
 
-# ========== Filter Controls ==========
-filter_col1, filter_col2 = st.columns([2, 1])
+# ========== Filters ==========
+filter_col1, filter_col2, filter_col3 = st.columns([2, 1, 1])
 
 with filter_col1:
-    search_keyword = st.text_input("🔍 Tìm kiếm theo từ khóa (FMCG, HRBP, Bất động sản, Sản xuất...):", "")
+    search_keyword = st.text_input("🔍 Tìm theo Vị trí / Từ khóa (COO, FMCG, Bất động sản, JobGo, Facebook...):", "")
 
 with filter_col2:
-    min_score = st.slider("🎯 Lọc theo Match Score tối thiểu (%):", 70, 98, 80)
+    selected_source = st.selectbox(
+        "🌐 Nguồn Việc Làm:",
+        ["Tất cả nguồn", "JobGo", "Vieclam24h", "Facebook Groups", "LinkedIn Jobs", "TopCV / VietnamWorks"]
+    )
 
-# Filter jobs logic
-filtered_jobs = [
-    j for j in st.session_state.jobs 
-    if j["match_score"] >= min_score and 
-    (not search_keyword or search_keyword.lower() in (j["title"] + j["company"] + j["description"] + "".join(j["matching_keywords"])).lower())
-]
+with filter_col3:
+    min_score = st.slider("🎯 Match Score tối thiểu (%):", 70, 98, 85)
+
+# Filter logic
+filtered_jobs = []
+for j in st.session_state.jobs:
+    match_score_pass = j["match_score"] >= min_score
+    
+    # Source filter
+    source_pass = True
+    if selected_source == "JobGo":
+        source_pass = "JobGo" in j["source"]
+    elif selected_source == "Vieclam24h":
+        source_pass = "Vieclam24h" in j["source"]
+    elif selected_source == "Facebook Groups":
+        source_pass = "Facebook" in j["source"]
+    elif selected_source == "LinkedIn Jobs":
+        source_pass = "LinkedIn" in j["source"]
+    elif selected_source == "TopCV / VietnamWorks":
+        source_pass = "TopCV" in j["source"] or "VietnamWorks" in j["source"]
+
+    # Keyword filter
+    kw_pass = True
+    if search_keyword:
+        query = search_keyword.lower()
+        search_blob = (j["title"] + j["company"] + j["description"] + j["source"] + "".join(j["matching_keywords"])).lower()
+        kw_pass = query in search_blob
+
+    if match_score_pass and source_pass and kw_pass:
+        filtered_jobs.append(j)
 
 # ========== Job Listings ==========
-st.markdown(f"### 🔥 Hiển Thị {len(filtered_jobs)} / {len(st.session_state.jobs)} Việc Làm HR Cấp Cao")
+st.markdown(f"### 💼 Hiển Thị {len(filtered_jobs)} / {len(st.session_state.jobs)} Cơ Hội Việc Làm COO & HR Executive")
 
 for idx, job in enumerate(filtered_jobs):
     is_applied = job["id"] in st.session_state.applied_jobs
@@ -441,21 +452,21 @@ for idx, job in enumerate(filtered_jobs):
 
         with top_col1:
             st.markdown(f"#### {job['title']}")
-            st.markdown(f"🏢 **{job['company']}**")
+            st.markdown(f"🏢 **{job['company']}** &nbsp; <span class='source-tag'>Nguồn: {job['source']}</span>", unsafe_allow_html=True)
 
         with top_col2:
-            color = "#34d399" if job["match_score"] >= 80 else ("#fbbf24" if job["match_score"] >= 70 else "#94a3b8")
+            color = "#34d399" if job["match_score"] >= 90 else ("#fbbf24" if job["match_score"] >= 80 else "#94a3b8")
             st.markdown(f"<div style='text-align:center;'><span style='font-size:1.8rem;font-weight:800;color:{color};'>{job['match_score']}%</span><br><small>Match Score</small></div>", unsafe_allow_html=True)
 
         meta_col1, meta_col2, meta_col3 = st.columns(3)
         with meta_col1:
-            st.caption(f"💰 {job['salary']}")
+            st.caption(f"💰 **Lương:** {job['salary']}")
         with meta_col2:
-            st.caption(f"📍 {job['location']}")
+            st.caption(f"📍 **Địa điểm:** {job['location']}")
         with meta_col3:
-            st.caption(f"🌐 {job['source']} • {job['posted_date']}")
+            st.caption(f"🕒 **Đăng:** {job['posted_date']}")
 
-        st.caption(job["description"][:240] + "...")
+        st.caption(job["description"])
 
         if job.get("matching_keywords"):
             kw_html = " ".join([f"<span class='tag'>{kw}</span>" for kw in job["matching_keywords"]])
@@ -469,22 +480,22 @@ for idx, job in enumerate(filtered_jobs):
             else:
                 if st.button(f"🚀 1-Click Nộp Đơn", key=f"apply_{job['id']}"):
                     st.session_state.applied_jobs.add(job["id"])
-                    st.success(f"Đã nộp hồ sơ thành công cho {job['company']}!")
+                    st.success(f"Đã nộp hồ sơ thành công vị trí {job['title']} tại {job['company']}!")
                     st.rerun()
 
         with btn_col2:
-            if st.button(f"📝 Xem Cover Letter", key=f"cl_{job['id']}"):
+            if st.button(f"📝 Cover Letter COO/HR", key=f"cl_{job['id']}"):
                 st.session_state[f"show_cl_{job['id']}"] = not st.session_state.get(f"show_cl_{job['id']}", False)
 
         if st.session_state.get(f"show_cl_{job['id']}", False):
             with st.expander(f"Cover Letter - {job['company']}", expanded=True):
                 edited_letter = st.text_area(
-                    "Chỉnh sửa Cover Letter trước khi nộp:",
+                    "Chỉnh sửa Thư Ứng Tuyển trước khi nộp:",
                     value=job["cover_letter"],
-                    height=280,
+                    height=300,
                     key=f"letter_{job['id']}"
                 )
-                if st.button(f"💾 Lưu & Nộp Đơn", key=f"save_cl_{job['id']}"):
+                if st.button(f"💾 Lưu & Nộp Đơn Ngay", key=f"save_cl_{job['id']}"):
                     job["cover_letter"] = edited_letter
                     st.session_state.applied_jobs.add(job["id"])
                     st.success("Đã lưu Cover Letter và nộp hồ sơ thành công!")
@@ -492,4 +503,4 @@ for idx, job in enumerate(filtered_jobs):
 
         st.markdown("---")
 
-st.caption("HR Executive Job-Hunt Copilot © 2026 | AI-Powered by Gemini & Antigravity | Dành cho Nguyễn Văn Duy")
+st.caption("Executive Job-Hunt Copilot © 2026 | AI-Powered by Gemini & Antigravity | Dành riêng cho Nguyễn Văn Duy")
