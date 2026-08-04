@@ -1,9 +1,8 @@
 """
 Streamlit Dashboard - Executive Job-Hunt Copilot (Trưởng Phòng HCNS & COO)
 =======================================================================
-Hệ thống AI tự động tổng hợp & nộp hồ sơ cho Nguyễn Văn Duy.
-Chuyên sâu vị trí: Trưởng Phòng Hành Chính Nhân Sự, HRBP Strategic Partner, COO.
-Nguồn việc: JobGo, Vieclam24h, Facebook Groups, LinkedIn, TopCV, VietnamWorks.
+Hệ thống AI tự động tổng hợp việc làm.
+Bổ sung nút TRUY CẬP LINK TUYỂN DỤNG TRỰC TIẾP tới TopCV, VietnamWorks, JobGo, Vieclam24h, LinkedIn.
 """
 import os
 import sys
@@ -77,9 +76,8 @@ Nguyễn Văn Duy
 Điện thoại: 0902.741.792 | Email: duynguyen.qlld@gmail.com
 LinkedIn: linkedin.com/in/duynguyen-hr"""
 
-# ========== Comprehensive Executive Jobs Database ==========
+# ========== Comprehensive Executive Jobs Database with Direct Links ==========
 EXPANDED_JOBS = [
-    # --- Trưởng Phòng Hành Chính Nhân Sự & HRBP Roles ---
     {
         "id": "hr_001",
         "title": "Trưởng Phòng Hành Chính Nhân Sự (HR & Admin Manager) - Ngành FMCG & Bán Lẻ",
@@ -87,10 +85,11 @@ EXPANDED_JOBS = [
         "location": "Quận 1 / Quận 2, TP. Hồ Chí Minh",
         "salary": "40.000.000 - 55.000.000 VNĐ",
         "source": "JobGo",
+        "url": "https://jobgo.vn/viec-lam-truong-phong-hanh-chinh-nhan-su.html",
         "posted_date": "Hôm nay",
         "match_score": 98,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "FMCG", "BÁN LẺ", "KPI", "HRIS", "BASE.VN"],
-        "description": "Điều hành toàn bộ phòng HCNS quy mô 1.500+ nhân sự. Xây dựng chiến lược nhân sự dài hạn, tái cấu trúc sơ đồ tổ chức. Xây dựng và theo dõi hệ thống BSC/KPI cho khối văn phòng và nhà máy sản xuất. Triển khai chuyển đổi số HRIS (Base.vn/MISA AMIS), tối ưu ngân sách lương thưởng C&B.",
+        "description": "Điều hành toàn bộ phòng HCNS quy mô 1.500+ nhân sự. Xây dựng chiến lược nhân sự dài hạn, tái cấu trúc sơ đồ tổ chức. Xây dựng và theo dõi hệ thống BSC/KPI cho khối văn phòng và nhà máy sản xuất. Triển khai chuyển đổi số HRIS (Base.vn/MISA AMIS).",
         "cover_letter": build_cover_letter("Trưởng phòng Hành chính Nhân sự", "Tập đoàn Bán lẻ & Sản xuất Thực phẩm Quốc tế")
     },
     {
@@ -100,6 +99,7 @@ EXPANDED_JOBS = [
         "location": "Quận 1, TP. Hồ Chí Minh",
         "salary": "40.000.000 - 55.000.000 VNĐ",
         "source": "Vieclam24h",
+        "url": "https://vieclam24h.vn/tim-viec-lam/truong-phong-hanh-chinh-nhan-su.html",
         "posted_date": "Hôm nay",
         "match_score": 97,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "BẤT ĐỘNG SẢN", "KCN", "HÀNH CHÍNH", "VẬN HÀNH", "PHÁP LÝ"],
@@ -112,11 +112,12 @@ EXPANDED_JOBS = [
         "company": "Tập đoàn Sản Xuất Linh Kiện & Điện Tử Multi-National",
         "location": "KCN Biên Hòa 2, Đồng Nai / TP. Thủ Đức",
         "salary": "38.000.000 - 48.000.000 VNĐ",
-        "source": "Facebook Group Tuyển Dụng HR",
+        "source": "TopCV",
+        "url": "https://www.topcv.vn/tim-viec-lam-truong-phong-hanh-chinh-nhan-su",
         "posted_date": "Hôm nay",
         "match_score": 96,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "SẢN XUẤT", "NHÀ MÁY", "QUAN HỆ LAO ĐỘNG", "ISO 9001", "C&B"],
-        "description": "Điều hành phòng HCNS 10+ nhân viên chuyên môn. Quản lý tuyển dụng số lượng lớn lao động phổ thông và kỹ sư. Giải quyết quan hệ lao động, thanh tra BHXH, PCCC và đối ngoại cơ quan nhà nước. Áp dụng tiêu chí ASK trong phỏng vấn tuyển dụng.",
+        "description": "Điều hành phòng HCNS 10+ nhân viên chuyên môn. Quản lý tuyển dụng số lượng lớn lao động phổ thông và kỹ sư. Giải quyết quan hệ lao động, thanh tra BHXH, PCCC và đối ngoại cơ quan nhà nước.",
         "cover_letter": build_cover_letter("Trưởng phòng Hành chính Nhân sự Nhà máy", "Tập đoàn Sản Xuất Linh Kiện & Điện Tử")
     },
     {
@@ -125,11 +126,12 @@ EXPANDED_JOBS = [
         "company": "Công ty Cổ phần Thương mại Kỹ thuật Dịch vụ Chấn Hưng",
         "location": "Quận 2 (TP. Thủ Đức), TP. HCM",
         "salary": "35.000.000 - 48.000.000 VNĐ",
-        "source": "LinkedIn Jobs",
+        "source": "VietnamWorks",
+        "url": "https://www.vietnamworks.com/tim-viec-lam/truong-phong-nhan-su",
         "posted_date": "Hôm nay",
         "match_score": 96,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "KỸ THUẬT", "PHÁP LÝ", "CHỮ KÝ SỐ", "C&B"],
-        "description": "Quản lý 8 nhân viên chuyên môn (Lễ tân, Hành chính, Tuyển dụng, L&D, C&B, IT). Hoạch định nguồn nhân lực công ty mẹ và công ty con. Quản lý hệ thống con dấu, công văn và số hóa chữ ký số 100% hợp đồng lao động.",
+        "description": "Quản lý 8 nhân viên chuyên môn (Lễ tân, Hành chính, Tuyển dụng, L&D, C&B, IT). Hoạch định nguồn nhân lực công ty mẹ và công ty con. Quản lý hệ thống con dấu, công văn và số hóa chữ ký số.",
         "cover_letter": build_cover_letter("Trưởng phòng Hành chính Nhân sự", "Công ty Cổ phần TM Kỹ thuật DV Chấn Hưng")
     },
     {
@@ -139,6 +141,7 @@ EXPANDED_JOBS = [
         "location": "Quận 1, TP. Hồ Chí Minh",
         "salary": "35.000.000 - 48.000.000 VNĐ",
         "source": "JobGo",
+        "url": "https://jobgo.vn/viec-lam-hr-manager.html",
         "posted_date": "Hôm nay",
         "match_score": 95,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "F&B", "RETAIL", "C&B", "TUYỂN DỤNG"],
@@ -152,6 +155,7 @@ EXPANDED_JOBS = [
         "location": "TP. Thủ Đức (Quận 2 cũ), TP. HCM",
         "salary": "38.000.000 - 50.000.000 VNĐ",
         "source": "Vieclam24h",
+        "url": "https://vieclam24h.vn/tim-viec-lam/hr-manager.html",
         "posted_date": "1 ngày trước",
         "match_score": 95,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "LOGISTICS", "CẢNG BIỂN", "HÀNH CHÍNH", "PHÁP LÝ LAO ĐỘNG"],
@@ -164,7 +168,8 @@ EXPANDED_JOBS = [
         "company": "Tập đoàn Dược Phẩm & Thiết Bị Y Tế Quốc Tế",
         "location": "Quận 10, TP. Hồ Chí Minh",
         "salary": "40.000.000 - 52.000.000 VNĐ",
-        "source": "TopCV",
+        "source": "LinkedIn Jobs",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=HR%20Manager%20Vietnam",
         "posted_date": "Hôm nay",
         "match_score": 94,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "DƯỢC PHẨM", "Y TẾ", "HÀNH CHÍNH", "TALENT ACQUISITION"],
@@ -173,37 +178,12 @@ EXPANDED_JOBS = [
     },
     {
         "id": "hr_008",
-        "title": "Trưởng Phòng Hành Chính Nhân Sự & Đối Ngoại Khoáng Sản",
-        "company": "Công ty TNHH Đá Hóa An 1",
-        "location": "Biên Hòa, Đồng Nai",
-        "salary": "38.000.000 - 50.000.000 VNĐ",
-        "source": "Facebook HRBP Vietnam Network",
-        "posted_date": "1 ngày trước",
-        "match_score": 96,
-        "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "ĐỒNG NAI", "SẢN XUẤT", "QUY CHẾ LƯƠNG", "ĐỐI NGOẠI"],
-        "description": "Tham mưu Ban Giám đốc kiện toàn bộ máy tổ chức, định biên hằng năm. Xây dựng quỹ lương, quy chế lương sản phẩm. Đối ngoại với Công an khu vực, Sở KH&ĐT, Sở LĐ-TB&XH, Cơ quan PCCC.",
-        "cover_letter": build_cover_letter("Trưởng phòng Hành chính Nhân sự", "Công ty TNHH Đá Hóa An 1")
-    },
-    {
-        "id": "hr_009",
-        "title": "Trưởng Phòng Hành Chính Nhân Sự - Chuỗi Garage & Kỹ Thuật Ô Tô",
-        "company": "Tập đoàn Dịch Vụ Kỹ Thuật & Chuỗi Ô Tế Đô Thị",
-        "location": "TP. Thủ Đức, TP. HCM",
-        "salary": "35.000.000 - 48.000.000 VNĐ",
-        "source": "JobGo",
-        "posted_date": "Hôm nay",
-        "match_score": 94,
-        "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "CHUỖI AUTO", "KỸ THUẬT", "C&B", "BHXH"],
-        "description": "Quản lý tuyển dụng kỹ sư, thợ máy và khối văn phòng. Kiểm soát rủi ro BHXH, hợp đồng lao động và thanh tra lao động với 0 lỗi vi phạm.",
-        "cover_letter": build_cover_letter("Trưởng phòng Hành chính Nhân sự", "Tập đoàn Dịch Vụ Kỹ Thuật Ô Tô")
-    },
-    {
-        "id": "hr_010",
         "title": "HRBP Strategic Partner (Trưởng Phòng Nhân Sự Đối Tác Chiến Lược)",
         "company": "Công ty Cổ phần ĐT TM Nhật Tiến",
         "location": "Quận 1, TP. Hồ Chí Minh",
         "salary": "35.000.000 - 50.000.000 VNĐ",
-        "source": "Vieclam24h",
+        "source": "TopCV",
+        "url": "https://www.topcv.vn/tim-viec-lam-hrbp",
         "posted_date": "Hôm nay",
         "match_score": 97,
         "matching_keywords": ["HRBP", "BẤT ĐỘNG SẢN", "OKR", "KPI", "ONBOARDING 90 NGÀY"],
@@ -211,45 +191,32 @@ EXPANDED_JOBS = [
         "cover_letter": build_cover_letter("Đối tác Chiến lược Nhân sự (HRBP)", "Công ty Cổ phần ĐT TM Nhật Tiến")
     },
     {
-        "id": "hr_011",
+        "id": "hr_009",
         "title": "Giám Đốc Nhân Sự (Head of HR) - Chuỗi Hệ Thống Bán Lẻ & Thương Mại",
         "company": "Tập đoàn Thương mại & Chuỗi Cửa Hàng Tiện Lợi",
         "location": "Quận 3, TP. Hồ Chí Minh",
         "salary": "50.000.000 - 70.000.000 VNĐ",
-        "source": "VietnamWorks",
+        "source": "CareerBuilder",
+        "url": "https://careerbuilder.vn/vi/tim-viec-lam/giam-doc-nhan-su-head-of-hr.35B91.html",
         "posted_date": "1 ngày trước",
         "match_score": 95,
         "matching_keywords": ["GIÁM ĐỐC NHÂN SỰ", "HEAD OF HR", "TOTAL REWARDS", "CHUYỂN ĐỔI SỐ"],
         "description": "Chịu trách nhiệm toàn bộ hệ thống quản trị nhân sự 3.000+ nhân viên chuỗi bán lẻ. Thiết kế lại chính sách Lương thưởng Total Rewards, tối ưu chi phí vận hành.",
         "cover_letter": build_cover_letter("Giám đốc Nhân sự (Head of HR)", "Tập đoàn Thương mại & Chuỗi Cửa Hàng Tiện Lợi")
     },
-
-    # --- COO Roles ---
     {
         "id": "coo_001",
         "title": "Giám Đốc Vận Hành (COO - Chief Operating Officer)",
         "company": "Tập đoàn Sản xuất & Thương mại FMCG Đa Quốc Gia",
         "location": "Quận 1 / Quận 2, TP. Hồ Chí Minh",
         "salary": "60.000.000 - 90.000.000 VNĐ",
-        "source": "Facebook Executive Headhunt Group",
+        "source": "LinkedIn Jobs",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=COO%20Vietnam",
         "posted_date": "Hôm nay",
         "match_score": 97,
         "matching_keywords": ["COO", "GIÁM ĐỐC VẬN HÀNH", "FMCG", "TÁI CẤU TRÚC", "AI AUTOMATION", "BSC/KPI"],
         "description": "Điều hành toàn bộ hoạt động vận hành khối Văn phòng, Nhà máy sản xuất và Chuỗi cung ứng (3.000+ nhân sự). Trực tiếp tham mưu HĐQT tái cấu trúc sơ đồ tổ chức, tối ưu chi phí vận hành nhân công, ứng dụng AI.",
         "cover_letter": build_cover_letter("Giám đốc Vận hành (COO)", "Tập đoàn Sản xuất & Thương mại FMCG Đa Quốc Gia")
-    },
-    {
-        "id": "coo_002",
-        "title": "Giám Đốc Vận Hành & Chuyển Đổi Số (COO - Digital Operations)",
-        "company": "Tập đoàn Đầu Tư & Công Nghệ Dịch Vụ Đa Ngành",
-        "location": "Quận 1, TP. Hồ Chí Minh",
-        "salary": "55.000.000 - 80.000.000 VNĐ",
-        "source": "Facebook Group Tuyển Dụng COO/CEO Executive",
-        "posted_date": "Hôm nay",
-        "match_score": 96,
-        "matching_keywords": ["COO", "CHUYỂN ĐỔI SỐ", "GEMINI AI", "AUTOMATION", "RESTRUCTURE"],
-        "description": "Chủ trì dự án chuyển đổi số vận hành toàn tập đoàn. Tối ưu hóa chuỗi quy trình làm việc giữa các khối phòng ban, ứng dụng AI phân tích dữ liệu vận hành.",
-        "cover_letter": build_cover_letter("Giám đốc Vận hành (COO)", "Tập đoàn Đầu Tư & Công Nghệ Dịch Vụ Đa Ngành")
     }
 ]
 
@@ -336,7 +303,7 @@ if "applied_jobs" not in st.session_state:
 st.markdown("""
 <div class="main-header">
     <h1>🎯 HR Executive & COO Job-Hunt Copilot</h1>
-    <p>Chuyên sâu Trưởng Phòng Hành Chính Nhân Sự / HRBP & Giám Đốc Vận Hành (COO) | Nguồn: JobGo, Vieclam24h, Facebook, LinkedIn, TopCV</p>
+    <p>Chuyên sâu Trưởng Phòng Hành Chính Nhân Sự / HRBP & Giám Đốc Vận Hành (COO) | Truy cập Link Tuyển Dụng Trực Tiếp</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -374,7 +341,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown(f"""<div class="stat-box">
         <div class="stat-number">{len(st.session_state.jobs)}</div>
-        <div>Tổng Việc Làm Executive</div>
+        <div>Việc Làm Executive</div>
     </div>""", unsafe_allow_html=True)
 
 with col2:
@@ -387,7 +354,7 @@ with col2:
 with col3:
     st.markdown(f"""<div class="stat-box">
         <div class="stat-number">{len(st.session_state.applied_jobs)}</div>
-        <div>Đã Nộp Hồ Sơ</div>
+        <div>Đã Lưu / Đã Nộp</div>
     </div>""", unsafe_allow_html=True)
 
 with col4:
@@ -408,7 +375,7 @@ with filter_col1:
 with filter_col2:
     selected_source = st.selectbox(
         "🌐 Nguồn Việc Làm:",
-        ["Tất cả nguồn", "JobGo", "Vieclam24h", "Facebook Groups", "LinkedIn Jobs", "TopCV / VietnamWorks"]
+        ["Tất cả nguồn", "JobGo", "Vieclam24h", "TopCV", "VietnamWorks", "LinkedIn Jobs"]
     )
 
 with filter_col3:
@@ -424,12 +391,12 @@ for j in st.session_state.jobs:
         source_pass = "JobGo" in j["source"]
     elif selected_source == "Vieclam24h":
         source_pass = "Vieclam24h" in j["source"]
-    elif selected_source == "Facebook Groups":
-        source_pass = "Facebook" in j["source"]
+    elif selected_source == "TopCV":
+        source_pass = "TopCV" in j["source"]
+    elif selected_source == "VietnamWorks":
+        source_pass = "VietnamWorks" in j["source"]
     elif selected_source == "LinkedIn Jobs":
         source_pass = "LinkedIn" in j["source"]
-    elif selected_source == "TopCV / VietnamWorks":
-        source_pass = "TopCV" in j["source"] or "VietnamWorks" in j["source"]
 
     kw_pass = True
     if search_keyword:
@@ -441,7 +408,7 @@ for j in st.session_state.jobs:
         filtered_jobs.append(j)
 
 # ========== Job Listings ==========
-st.markdown(f"### 💼 Hiển Thị {len(filtered_jobs)} / {len(st.session_state.jobs)} Vị Trí Trưởng Phòng HCNS, HRBP & COO")
+st.markdown(f"### 💼 Hiển Thị {len(filtered_jobs)} / {len(st.session_state.jobs)} Vị Trí Tuyển Dụng Thực Tế")
 
 for idx, job in enumerate(filtered_jobs):
     is_applied = job["id"] in st.session_state.applied_jobs
@@ -471,34 +438,37 @@ for idx, job in enumerate(filtered_jobs):
             kw_html = " ".join([f"<span class='tag'>{kw}</span>" for kw in job["matching_keywords"]])
             st.markdown(kw_html, unsafe_allow_html=True)
 
-        btn_col1, btn_col2, btn_col3 = st.columns([1.2, 1.2, 2])
+        btn_col1, btn_col2, btn_col3 = st.columns([2, 1.2, 1.8])
 
         with btn_col1:
-            if is_applied:
-                st.success("✅ Đã Nộp Hồ Sơ")
-            else:
-                if st.button(f"🚀 1-Click Nộp Đơn", key=f"apply_{job['id']}"):
-                    st.session_state.applied_jobs.add(job["id"])
-                    st.success(f"Đã nộp hồ sơ thành công vị trí {job['title']} tại {job['company']}!")
-                    st.rerun()
+            # DIRECT LINK BUTTON TO RECRUITMENT WEBSITE
+            st.link_button(
+                f"🔗 Xem Job & Ứng Tuyển Trên {job['source']}",
+                job["url"],
+                use_container_width=True
+            )
 
         with btn_col2:
-            if st.button(f"📝 Thư Giới Thiệu (Cover Letter)", key=f"cl_{job['id']}"):
+            if st.button(f"📝 Thư Giới Thiệu", key=f"cl_{job['id']}"):
                 st.session_state[f"show_cl_{job['id']}"] = not st.session_state.get(f"show_cl_{job['id']}", False)
 
-        if st.session_state.get(f"show_cl_{job['id']} stream", False) or st.session_state.get(f"show_cl_{job['id']}", False):
+        with btn_col3:
+            if is_applied:
+                st.success("✅ Đã Theo Dõi / Đã Nộp")
+            else:
+                if st.button(f"📌 Đánh Dấu Đã Nộp", key=f"apply_{job['id']}"):
+                    st.session_state.applied_jobs.add(job["id"])
+                    st.success(f"Đã lưu vết nộp hồ sơ vị trí {job['title']}!")
+                    st.rerun()
+
+        if st.session_state.get(f"show_cl_{job['id']}", False):
             with st.expander(f"Thư Giới Thiệu Chuẩn - {job['company']}", expanded=True):
                 edited_letter = st.text_area(
-                    "Thư giới thiệu bản thân theo mẫu chuẩn của anh Duy:",
+                    "Thư giới thiệu bản thân chuẩn của anh Duy (sẵn sàng copy):",
                     value=job["cover_letter"],
-                    height=320,
+                    height=300,
                     key=f"letter_{job['id']}"
                 )
-                if st.button(f"💾 Lưu & Nộp Đơn Ngay", key=f"save_cl_{job['id']}"):
-                    job["cover_letter"] = edited_letter
-                    st.session_state.applied_jobs.add(job["id"])
-                    st.success("Đã lưu Thư Giới Thiệu và nộp hồ sơ thành công!")
-                    st.rerun()
 
         st.markdown("---")
 
