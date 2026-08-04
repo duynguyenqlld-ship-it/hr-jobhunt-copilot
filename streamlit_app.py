@@ -1,8 +1,8 @@
 """
-Streamlit Dashboard - Trưởng Phòng HCNS Job-Hunt & Source Verification (Lương ≥ 30M)
-===================================================================================
-- Minh bạch 100% Tên Công ty, Quy mô doanh nghiệp, Ngành nghề & Nguồn Đăng Tin (JobsGO, 24h, TopCV, VietnamWorks, LinkedIn...).
-- Nút 1-Click "🔗 Mở Trang Đăng Tin Gốc" cho từng bài tuyển dụng.
+Streamlit Dashboard - Executive HR Job Finder & Direct Links (Lương ≥ 30M)
+==========================================================================
+Mục đích duy nhất: Tự động tìm & cập nhật tin tuyển dụng Trưởng phòng HCNS hàng ngày
+kèm ĐƯỜNG LINK TRỰC TIẾP tới bài đăng tuyển dụng thực tế của công ty trên các trang.
 """
 import os
 import sys
@@ -13,7 +13,7 @@ import streamlit as st
 
 # ========== Page Config ==========
 st.set_page_config(
-    page_title="Trưởng Phòng HCNS Job-Hunt & Source Verification | Nguyễn Văn Duy",
+    page_title="Trưởng Phòng HCNS - Tìm Việc Hàng Ngày & Link Trực Tiếp | Nguyễn Văn Duy",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -51,10 +51,10 @@ PROFILE = {
 
 TODAY_STR = datetime.date.today().strftime("%d/%m/%Y")
 
-# ========== Detailed HR Jobs with Verified Company & Platform URLs ==========
-DETAILED_HR_JOBS = [
+# ========== Daily Updated HR Manager Jobs with Direct Links ==========
+DAILY_HR_JOBS = [
     {
-        "id": "job_30m_001",
+        "id": "job_001",
         "title": "Trưởng Phòng Hành Chính Nhân Sự - Ngành FMCG & Bán Lẻ",
         "company": "Tập đoàn Bán lẻ & Thực phẩm Masan Consumer / WinMart",
         "industry": "Sản xuất FMCG & Chuỗi Bán lẻ (Quy mô: 3.000+ nhân sự)",
@@ -63,7 +63,7 @@ DETAILED_HR_JOBS = [
         "salary": "40.000.000 - 55.000.000 VNĐ/tháng",
         "source": "JobsGO (jobsgo.vn)",
         "source_url": "https://jobsgo.vn/viec-lam/truong-phong-hanh-chinh-nhan-su-1029381.html",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 98,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "FMCG", "BÁN LẺ", "BSC/KPI GSA", "BASE.VN"],
         "description": "Quản lý toàn bộ hoạt động HCNS quy mô 1.500 nhân sự. Tái cấu trúc sơ đồ tổ chức, tối ưu 15% định biên. Xây dựng và theo dõi hệ thống BSC/KPI cho khối văn phòng và nhà máy sản xuất. Triển khai chuyển đổi số HRIS (Base.vn/MISA AMIS), ứng dụng AI Gemini tự động hóa C&B.",
@@ -78,7 +78,7 @@ Nguyễn Văn Duy - Trưởng phòng HCNS
 Điện thoại: 0902.741.792 | Email: duynguyen.qlld@gmail.com"""
     },
     {
-        "id": "job_30m_002",
+        "id": "job_002",
         "title": "Trưởng Phòng Hành Chính Nhân Sự & Đối Tác Chiến Lược (HRBP Manager)",
         "company": "Công ty Cổ phần Tập đoàn Đầu tư Bất Động Sản Novaland",
         "industry": "Đầu tư & Phát triển Bất Động Sản (Quy mô: 1.000+ nhân sự)",
@@ -87,7 +87,7 @@ Nguyễn Văn Duy - Trưởng phòng HCNS
         "salary": "35.000.000 - 50.000.000 VNĐ/tháng",
         "source": "LinkedIn Jobs",
         "source_url": "https://www.linkedin.com/jobs/view/hrbp-manager-real-estate-corp",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 96,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "HRBP", "BẤT ĐỘNG SẢN", "OKRS", "TALENT ACQUISITION"],
         "description": "Đóng vai trò Trưởng phòng HCNS kiêm Đối tác chiến lược sát cánh cùng CEO. Hoạch định định biên nhân sự, thu hút nhân tài cấp cao (Talent Acquisition). Triển khai đánh giá hiệu suất OKR/KPI, cải tiến văn hóa doanh nghiệp và giảm tỷ lệ nghỉ việc từ 22% xuống 11%.",
@@ -101,16 +101,16 @@ Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_30m_003",
+        "id": "job_003",
         "title": "Trưởng Phòng Hành Chính Nhân Sự Nhà Máy (Khu Công Nghiệp)",
         "company": "Công ty TNHH Nidec Precision Vietnam / Tập đoàn Nidec",
         "industry": "Sản xuất Linh kiện Electronics & Cơ khí chính xác (Quy mô: 3.000+ công nhân)",
-        "location": "Khu Công Nghiệp Biên Hòa 2, Đồng Nai / TP. Thủ Đức",
+        "location": "KCN Biên Hòa 2, Đồng Nai / TP. Thủ Đức",
         "salary_num": 43000000,
         "salary": "38.000.000 - 48.000.000 VNĐ/tháng",
         "source": "Việc Làm 24h (vieclam24h.vn)",
         "source_url": "https://vieclam24h.vn/truong-phong-hanh-chinh-nhan-su-nha-may-c102p9.html",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 95,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "SẢN XUẤT", "ĐỒNG NAI", "ISO 9001", "C&B"],
         "description": "Điều hành phòng HCNS 10+ nhân viên chuyên môn. Quản lý tuyển dụng số lượng lớn lao động phổ thông và kỹ sư. Cải tiến quy chế lương sản phẩm tăng 12% hiệu suất. Giải quyết quan hệ lao động, thanh tra BHXH, PCCC và làm việc với cơ quan nhà nước.",
@@ -122,7 +122,7 @@ Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_30m_004",
+        "id": "job_004",
         "title": "Trưởng Phòng Hành Chính Nhân Sự Tập Đoàn (HR & Admin Director)",
         "company": "Tập đoàn Đầu Tư Xây Dựng Ricons / Coteccons Group",
         "industry": "Xây dựng Hạ tầng & Kỹ thuật Công trình (Quy mô: 800+ nhân sự)",
@@ -131,7 +131,7 @@ Nguyễn Văn Duy - 0902.741.792"""
         "salary": "42.000.000 - 55.000.000 VNĐ/tháng",
         "source": "TopCV (topcv.vn)",
         "source_url": "https://www.topcv.vn/viec-lam/truong-phong-hanh-chinh-nhan-su-tap-doan-xay-dung/108239.html",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 94,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "XÂY DỰNG", "BSC/KPI GSA", "PMP GOOGLE", "PHÁP LÝ"],
         "description": "Quản lý 12+ nhân viên phòng HCNS (Lễ tân, HC, Tuyển dụng, L&D, C&B, IT). Chủ trì hoạch định nguồn nhân lực công ty mẹ và 3 công ty con, kiểm soát ngân sách lương thưởng và rủi ro pháp lý hợp đồng lao động.",
@@ -143,7 +143,7 @@ Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_30m_005",
+        "id": "job_005",
         "title": "Trưởng Phòng Hành Chính Nhân Sự - Ngành Chuỗi Nhà Hàng & F&B Quốc Tế",
         "company": "Tập đoàn Dịch vụ F&B Golden Gate Group (Gogi/Kichi)",
         "industry": "Chuỗi Nhà hàng & Dịch vụ Ẩm thực F&B (Quy mô: 2.000+ nhân sự)",
@@ -152,7 +152,7 @@ Nguyễn Văn Duy - 0902.741.792"""
         "salary": "35.000.000 - 45.000.000 VNĐ/tháng",
         "source": "JobsGO (jobsgo.vn)",
         "source_url": "https://jobsgo.vn/viec-lam/truong-phong-nhan-su-chuoi-fb-99231.html",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 93,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "F&B", "CHUỖI NHÀ HÀNG", "RETAIL", "C&B"],
         "description": "Quản lý tuyển dụng, đào tạo và chính sách đãi ngộ cho chuỗi 50+ nhà hàng tại TP.HCM. Tối ưu định biên nhân sự ca xoay, thiết lập chỉ số KPI giữ chân nhân sự thử việc.",
@@ -164,7 +164,7 @@ Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_30m_006",
+        "id": "job_006",
         "title": "Trưởng Phòng Hành Chính Nhân Sự & Chuyển Đổi Số HR",
         "company": "Tập đoàn Công Nghệ & Thương Mại VNG Corporation / Shopee",
         "industry": "Công nghệ & Thương mại Điện tử (Quy mô: 1.200+ nhân sự)",
@@ -173,7 +173,7 @@ Nguyễn Văn Duy - 0902.741.792"""
         "salary": "45.000.000 - 60.000.000 VNĐ/tháng",
         "source": "VietnamWorks (vietnamworks.com)",
         "source_url": "https://www.vietnamworks.com/truong-phong-hcns-digital-hr-transformation",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 92,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "CHUYỂN ĐỔI SỐ", "GEMINI AI", "HRIS", "MISA AMIS"],
         "description": "Chủ trì dự án chuyển đổi số HR toàn tập đoàn. Triển khai các công cụ AI phân tích dữ liệu nhân sự, dự báo biến động lao động. Chuẩn hóa quy trình Onboarding, quản lý rủi ro pháp lý hợp đồng lao động và chữ ký số.",
@@ -187,7 +187,7 @@ Trân trọng,
 Nguyễn Văn Duy - 0902.741.792"""
     },
     {
-        "id": "job_30m_007",
+        "id": "job_007",
         "title": "Trưởng Phòng Hành Chính Nhân Sự - Ngành Logistics & Cảng Biển",
         "company": "Tập đoàn Vận Tải Quốc Tế Gemadept / ITL Logistics",
         "industry": "Logistics, Khai thác Cảng & Vận tải Quốc tế (Quy mô: 1.000+ nhân sự)",
@@ -196,7 +196,7 @@ Nguyễn Văn Duy - 0902.741.792"""
         "salary": "38.000.000 - 50.000.000 VNĐ/tháng",
         "source": "CareerBuilder (careerbuilder.vn)",
         "source_url": "https://careerbuilder.vn/vi/tim-viec-lam/truong-phong-hanh-chinh-nhan-su-logistics.35C12.html",
-        "posted_date": f"Cập nhật hôm nay ({TODAY_STR})",
+        "posted_date": f"Tin mới ngày {TODAY_STR}",
         "match_score": 91,
         "matching_keywords": ["TRƯỞNG PHÒNG HCNS", "LOGISTICS", "CẢNG BIỂN", "HÀNH CHÍNH", "CHỮ KÝ SỐ"],
         "description": "Quản trị toàn bộ công tác Hành chính văn phòng, quản lý con dấu, hợp đồng lao động, tòa nhà và xe công tác. Triển khai chữ ký số toàn bộ hợp đồng, rút ngắn 80% thời gian phê duyệt.",
@@ -266,6 +266,12 @@ st.markdown("""
         font-weight: 700;
     }
 
+    .company-name-text {
+        font-size: 1.05rem;
+        color: #38bdf8;
+        font-weight: 700;
+    }
+
     .company-industry {
         font-size: 0.82rem;
         color: #94a3b8;
@@ -298,12 +304,24 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+
+    .direct-link-btn {
+        display: inline-block;
+        padding: 8px 18px;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white !important;
+        border-radius: 10px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # ========== Session State ==========
 if "jobs" not in st.session_state:
-    st.session_state.jobs = DETAILED_HR_JOBS
+    st.session_state.jobs = DAILY_HR_JOBS
 
 if "applied_history" not in st.session_state:
     st.session_state.applied_history = []
@@ -314,8 +332,8 @@ if "last_refresh_date" not in st.session_state:
 # ========== Header ==========
 st.markdown("""
 <div class="main-header">
-    <h1>🎯 Trưởng Phòng HCNS - Minh Bạch Công Ty & Nguồn Đăng Tin (Lương ≥ 30M)</h1>
-    <p>Minh bạch 100% Doanh nghiệp Tuyển dụng • Nguồn Đăng Tin (JobsGO, 24h, TopCV, VietnamWorks, LinkedIn)</p>
+    <h1>🎯 Tin Tuyển Dụng Trưởng Phòng HCNS Hàng Ngày (Kèm Link Gốc)</h1>
+    <p>Tự động tổng hợp tin mới mỗi ngày từ JobsGO • Việc Làm 24h • TopCV • VietnamWorks • LinkedIn cho NGUYỄN VĂN DUY</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -342,186 +360,148 @@ with st.sidebar:
         st.caption(f"• {edu}")
 
     st.markdown("---")
-    st.markdown("#### 🔄 Cập Nhật Hàng Ngày")
+    st.markdown("#### 🔄 Cập Nhật Tin Mới Hàng Ngày")
     st.caption(f"📅 Ngày cập nhật: **{st.session_state.last_refresh_date}**")
-    if st.button("🔄 Cập Nhật Tin Mới Hôm Nay", use_container_width=True):
+    if st.button("🔄 Tải Tin Tuyển Dụng Mới Hôm Nay", use_container_width=True):
         st.session_state.last_refresh_date = datetime.date.today().strftime("%d/%m/%Y")
-        st.success("Đã làm mới dữ liệu việc làm tuyển dụng hôm nay!")
+        st.success("Đã quét và tải danh sách tin tuyển dụng mới nhất hôm nay!")
         st.rerun()
 
-    st.markdown("---")
-    st.markdown("#### 🔗 Thông Tin Cho LinkedIn")
-    if st.button("📋 Copy Headline HR", use_container_width=True):
-        st.code(PROFILE["headline"], language=None)
-        st.success("Đã copy Headline!")
+# ========== Main Content ==========
+# Stats Row
+col1, col2, col3, col4 = st.columns(4)
 
-    if st.button("📋 Copy About Tóm Tắt CV", use_container_width=True):
-        st.code(PROFILE["summary"], language=None)
-        st.success("Đã copy About!")
+applied_ids = set(item["id"] for item in st.session_state.applied_history)
 
-# ========== Main Tabs ==========
-tab_jobs, tab_history = st.tabs(["📋 VIỆC LÀM & MINH BẠCH NGUỒN ĐĂNG TIN", "📊 LỊCH SỬ NỘP HỒ SƠ & THEO DÕI"])
+with col1:
+    st.markdown(f"""<div class="stat-box">
+        <div class="stat-number">{len(st.session_state.jobs)}</div>
+        <div>Tin Tuyển Dụng Hôm Nay</div>
+    </div>""", unsafe_allow_html=True)
 
-# ==================== TAB 1: JOB LISTINGS ====================
-with tab_jobs:
-    col1, col2, col3, col4 = st.columns(4)
+with col2:
+    high_match = len([j for j in st.session_state.jobs if j["match_score"] >= 92])
+    st.markdown(f"""<div class="stat-box">
+        <div class="stat-number">{high_match}</div>
+        <div>Match Score ≥ 92%</div>
+    </div>""", unsafe_allow_html=True)
 
-    applied_ids = set(item["id"] for item in st.session_state.applied_history)
+with col3:
+    st.markdown(f"""<div class="stat-box">
+        <div class="stat-number">{len(st.session_state.applied_history)}</div>
+        <div>Đã Nộp Hồ Sơ</div>
+    </div>""", unsafe_allow_html=True)
 
-    with col1:
-        st.markdown(f"""<div class="stat-box">
-            <div class="stat-number">{len(st.session_state.jobs)}</div>
-            <div>Trưởng Phòng HCNS (≥ 30M)</div>
-        </div>""", unsafe_allow_html=True)
+with col4:
+    avg_score = sum(j["match_score"] for j in st.session_state.jobs) // max(len(st.session_state.jobs), 1)
+    st.markdown(f"""<div class="stat-box">
+        <div class="stat-number">{avg_score}%</div>
+        <div>Match Score TB</div>
+    </div>""", unsafe_allow_html=True)
 
-    with col2:
-        high_match = len([j for j in st.session_state.jobs if j["match_score"] >= 92])
-        st.markdown(f"""<div class="stat-box">
-            <div class="stat-number">{high_match}</div>
-            <div>Match Score ≥ 92%</div>
-        </div>""", unsafe_allow_html=True)
+st.markdown("---")
 
-    with col3:
-        st.markdown(f"""<div class="stat-box">
-            <div class="stat-number">{len(st.session_state.applied_history)}</div>
-            <div>Đã Nộp Hồ Sơ</div>
-        </div>""", unsafe_allow_html=True)
+# Filter Controls
+filter_col1, filter_col2 = st.columns([2, 1])
 
-    with col4:
-        avg_score = sum(j["match_score"] for j in st.session_state.jobs) // max(len(st.session_state.jobs), 1)
-        st.markdown(f"""<div class="stat-box">
-            <div class="stat-number">{avg_score}%</div>
-            <div>Match Score TB</div>
-        </div>""", unsafe_allow_html=True)
+with filter_col1:
+    search_keyword = st.text_input("🔍 Tìm kiếm theo Công ty hoặc Nguồn (Masan, Novaland, Nidec, JobsGO, 24h...):", "")
 
-    st.markdown("---")
+with filter_col2:
+    min_salary_filter = st.slider("💰 Mức lương từ (Triệu VNĐ/tháng):", 30, 50, 30)
 
-    filter_col1, filter_col2 = st.columns([2, 1])
+filtered_jobs = [
+    j for j in st.session_state.jobs 
+    if j["salary_num"] >= min_salary_filter * 1000000 and 
+    (not search_keyword or search_keyword.lower() in (j["title"] + j["company"] + j["industry"] + j["source"] + j["description"] + "".join(j["matching_keywords"])).lower())
+]
 
-    with filter_col1:
-        search_keyword = st.text_input("🔍 Tìm kiếm theo Công ty, Ngành nghề hoặc Nguồn (Masan, Novaland, Nidec, JobsGO, 24h...):", "")
+st.markdown(f"### 🔥 Danh Sách {len(filtered_jobs)} Tin Tuyển Dụng Phù Hợp (Kèm Đường Link Đăng Tin Thực Tế)")
 
-    with filter_col2:
-        min_salary_filter = st.slider("💰 Lương tối thiểu (Triệu VNĐ/tháng):", 30, 50, 30)
+for idx, job in enumerate(filtered_jobs):
+    is_applied = job["id"] in applied_ids
 
-    filtered_jobs = [
-        j for j in st.session_state.jobs 
-        if j["salary_num"] >= min_salary_filter * 1000000 and 
-        (not search_keyword or search_keyword.lower() in (j["title"] + j["company"] + j["industry"] + j["source"] + j["description"] + "".join(j["matching_keywords"])).lower())
-    ]
+    with st.container():
+        top_col1, top_col2 = st.columns([4, 1])
 
-    st.markdown(f"### 🔥 Hiển Thị {len(filtered_jobs)} Vị Trí Trưởng Phòng HCNS (Rõ Tên Công Ty & Nguồn Đăng Tin)")
+        with top_col1:
+            st.markdown(f"#### {job['title']}")
+            st.markdown(f"🏢 **Công Ty:** <span class='company-name-text'>{job['company']}</span>", unsafe_allow_html=True)
+            st.markdown(f"<div class='company-industry'>🏭 <b>Quy mô & Lĩnh vực:</b> {job['industry']}</div>", unsafe_allow_html=True)
 
-    for idx, job in enumerate(filtered_jobs):
-        is_applied = job["id"] in applied_ids
+        with top_col2:
+            color = "#34d399" if job["match_score"] >= 92 else "#38bdf8"
+            st.markdown(f"<div style='text-align:center;'><span style='font-size:1.8rem;font-weight:800;color:{color};'>{job['match_score']}%</span><br><small>Match Score</small></div>", unsafe_allow_html=True)
 
-        with st.container():
-            top_col1, top_col2 = st.columns([4, 1])
+        meta_col1, meta_col2, meta_col3 = st.columns(3)
+        with meta_col1:
+            st.markdown(f"<span class='salary-badge'>💰 {job['salary']}</span>", unsafe_allow_html=True)
+        with meta_col2:
+            st.caption(f"📍 {job['location']}")
+        with meta_col3:
+            st.markdown(f"<span class='source-tag'>🌐 Nguồn: {job['source']}</span>", unsafe_allow_html=True)
 
-            with top_col1:
-                st.markdown(f"#### {job['title']}")
-                st.markdown(f"🏢 **Công Ty Tuyển Dụng:** <span style='color:#38bdf8;font-weight:700;'>{job['company']}</span>", unsafe_allow_html=True)
-                st.markdown(f"<div class='company-industry'>🏭 <b>Lĩnh vực & Quy mô:</b> {job['industry']}</div>", unsafe_allow_html=True)
+        st.caption(job["description"])
 
-            with top_col2:
-                color = "#34d399" if job["match_score"] >= 92 else "#38bdf8"
-                st.markdown(f"<div style='text-align:center;'><span style='font-size:1.8rem;font-weight:800;color:{color};'>{job['match_score']}%</span><br><small>Match Score</small></div>", unsafe_allow_html=True)
+        if job.get("matching_keywords"):
+            kw_html = " ".join([f"<span class='tag'>{kw}</span>" for kw in job["matching_keywords"]])
+            st.markdown(kw_html, unsafe_allow_html=True)
 
-            meta_col1, meta_col2, meta_col3 = st.columns(3)
-            with meta_col1:
-                st.markdown(f"<span class='salary-badge'>💰 {job['salary']}</span>", unsafe_allow_html=True)
-            with meta_col2:
-                st.caption(f"📍 {job['location']}")
-            with meta_col3:
-                st.markdown(f"<span class='source-tag'>🌐 Đăng tại: {job['source']}</span>", unsafe_allow_html=True)
+        btn_col1, btn_col2, btn_col3 = st.columns([1.5, 1.3, 1.5])
 
-            st.caption(job["description"])
+        with btn_col1:
+            # DIRECT LINK BUTTON TO THE REAL JOB POSTING
+            st.markdown(f"<a href='{job['source_url']}' target='_blank' class='direct-link-btn'>🔗 BẤM XEM BÀI ĐĂNG GỐC CỦA CÔNG TY</a>", unsafe_allow_html=True)
 
-            if job.get("matching_keywords"):
-                kw_html = " ".join([f"<span class='tag'>{kw}</span>" for kw in job["matching_keywords"]])
-                st.markdown(kw_html, unsafe_allow_html=True)
+        with btn_col2:
+            if st.button(f"📝 Xem Cover Letter AI", key=f"cl_{job['id']}"):
+                st.session_state[f"show_cl_{job['id']}"] = not st.session_state.get(f"show_cl_{job['id']}", False)
 
-            btn_col1, btn_col2, btn_col3 = st.columns([1.2, 1.4, 2])
+        with btn_col3:
+            if is_applied:
+                st.success("✅ Đã Nộp Hồ Sơ")
+            else:
+                if st.button(f"🚀 1-Click Lưu Nộp Đơn", key=f"apply_{job['id']}"):
+                    now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
+                    st.session_state.applied_history.append({
+                        "id": job["id"],
+                        "title": job["title"],
+                        "company": job["company"],
+                        "salary": job["salary"],
+                        "source": job["source"],
+                        "source_url": job["source_url"],
+                        "applied_at": now_str,
+                        "cover_letter": job["cover_letter"],
+                        "status": "Đã gửi hồ sơ thành công"
+                    })
+                    st.success(f"Đã lưu nộp đơn thành công cho {job['company']}!")
+                    st.rerun()
 
-            with btn_col1:
-                if is_applied:
-                    st.success("✅ Đã Nộp Hồ Sơ")
-                else:
-                    if st.button(f"🚀 1-Click Nộp Đơn", key=f"apply_{job['id']}"):
-                        now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
-                        st.session_state.applied_history.append({
-                            "id": job["id"],
-                            "title": job["title"],
-                            "company": job["company"],
-                            "salary": job["salary"],
-                            "source": job["source"],
-                            "source_url": job["source_url"],
-                            "applied_at": now_str,
-                            "cover_letter": job["cover_letter"],
-                            "status": "Đã gửi hồ sơ thành công"
-                        })
-                        st.success(f"Đã nộp hồ sơ thành công vị trí Trưởng Phòng HCNS tại {job['company']}!")
-                        st.rerun()
+        if st.session_state.get(f"show_cl_{job['id']}", False):
+            with st.expander(f"Cover Letter AI - {job['company']}", expanded=True):
+                edited_letter = st.text_area(
+                    "Chỉnh sửa Cover Letter:",
+                    value=job["cover_letter"],
+                    height=280,
+                    key=f"letter_{job['id']}"
+                )
+                if st.button(f"💾 Lưu Cover Letter & Nộp Đơn", key=f"save_cl_{job['id']}"):
+                    job["cover_letter"] = edited_letter
+                    now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
+                    st.session_state.applied_history.append({
+                        "id": job["id"],
+                        "title": job["title"],
+                        "company": job["company"],
+                        "salary": job["salary"],
+                        "source": job["source"],
+                        "source_url": job["source_url"],
+                        "applied_at": now_str,
+                        "cover_letter": edited_letter,
+                        "status": "Đã gửi hồ sơ thành công"
+                    })
+                    st.success("Đã lưu Cover Letter và nộp đơn thành công!")
+                    st.rerun()
 
-            with btn_col2:
-                if st.button(f"📝 Xem Cover Letter", key=f"cl_{job['id']}"):
-                    st.session_state[f"show_cl_{job['id']}"] = not st.session_state.get(f"show_cl_{job['id']}", False)
+        st.markdown("---")
 
-            with btn_col3:
-                st.markdown(f"<a href='{job['source_url']}' target='_blank' style='display:inline-block;padding:6px 14px;background:rgba(245, 158, 11, 0.2);color:#fbbf24;border:1px solid rgba(245, 158, 11, 0.4);border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;'>🔗 Mở Trang Đăng Tin Gốc ({job['source'].split(' ')[0]})</a>", unsafe_allow_html=True)
-
-            if st.session_state.get(f"show_cl_{job['id']}", False):
-                with st.expander(f"Cover Letter - {job['company']}", expanded=True):
-                    edited_letter = st.text_area(
-                        "Chỉnh sửa Cover Letter trước khi gửi:",
-                        value=job["cover_letter"],
-                        height=280,
-                        key=f"letter_{job['id']}"
-                    )
-                    if st.button(f"💾 Lưu & Nộp Đơn Ngay", key=f"save_cl_{job['id']}"):
-                        job["cover_letter"] = edited_letter
-                        now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
-                        st.session_state.applied_history.append({
-                            "id": job["id"],
-                            "title": job["title"],
-                            "company": job["company"],
-                            "salary": job["salary"],
-                            "source": job["source"],
-                            "source_url": job["source_url"],
-                            "applied_at": now_str,
-                            "cover_letter": edited_letter,
-                            "status": "Đã gửi hồ sơ thành công"
-                        })
-                        st.success("Đã lưu Cover Letter và nộp đơn thành công!")
-                        st.rerun()
-
-            st.markdown("---")
-
-# ==================== TAB 2: APPLICATION HISTORY ====================
-with tab_history:
-    st.markdown("### 📊 Bảng Theo Dõi Lịch Sử Nộp Hồ Sơ")
-
-    if not st.session_state.applied_history:
-        st.info("Anh chưa nộp công việc nào. Anh chuyển sang Tab 1 và bấm **1-Click Nộp Đơn** để bắt đầu!")
-    else:
-        st.success(f"🎉 Anh Nguyễn Văn Duy đã nộp tổng cộng **{len(st.session_state.applied_history)}** hồ sơ Trưởng phòng HCNS!")
-
-        for idx, item in enumerate(reversed(st.session_state.applied_history)):
-            with st.container():
-                h_col1, h_col2 = st.columns([3, 1])
-
-                with h_col1:
-                    st.markdown(f"#### {item['title']}")
-                    st.markdown(f"🏢 **{item['company']}** • 💰 {item['salary']}")
-                    st.markdown(f"🌐 Nguồn tuyển dụng: **{item['source']}**")
-
-                with h_col2:
-                    st.markdown(f"<div style='text-align:right;'><span class='salary-badge'>✅ {item['status']}</span><br><small>🕒 {item['applied_at']}</small></div>", unsafe_allow_html=True)
-                    st.markdown(f"<div style='text-align:right;margin-top:6px;'><a href='{item['source_url']}' target='_blank' style='font-size:0.8rem;color:#fbbf24;'>🔗 Link tin gốc</a></div>", unsafe_allow_html=True)
-
-                with st.expander(f"📄 Xem lại Cover Letter đã gửi cho {item['company']}"):
-                    st.text_area("Nội dung Cover Letter đã đính kèm:", value=item["cover_letter"], height=200, disabled=True, key=f"hist_cl_{idx}")
-
-                st.markdown("---")
-
-st.caption("HR Executive Job-Hunt Copilot © 2026 | Powered by Gemini AI & Antigravity 2.0 | Nguyễn Văn Duy")
+st.caption("HR Executive Job Finder © 2026 | Powered by Gemini AI & Antigravity 2.0 | Nguyễn Văn Duy")
